@@ -9,6 +9,7 @@ class Register(Resource):
     parser.add_argument('username',type=str,required=True,help="This field cannot be blank")
     parser.add_argument('password',type=str,required=True,help="This field cannot be blank")
 
+
     def post(self):
         data=Register.parser.parse_args()
 

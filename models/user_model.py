@@ -1,6 +1,7 @@
 from db import db
+from sqlalchemy_serializer import SerializerMixin
 
-class UserModel(db.Model):
+class UserModel(db.Model, SerializerMixin):
     __tablename__='users'
     rollno=db.Column(db.String(100),primary_key=True)
     username=db.Column(db.String(80))
@@ -23,5 +24,8 @@ class UserModel(db.Model):
     @classmethod
     def find_by_username(cls,username):
         return cls.query.filter_by(username=username).first()
+
+
+    
 
     

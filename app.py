@@ -4,10 +4,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from NLP_util import pred
 
+from models.user_model import UserModel
+from flask import make_response,jsonify
+from sqlalchemy_serializer import SerializerMixin
+
 app=Flask(__name__)
 
-app.config['JWT_SECRET_KEY']='praneeth021'
-app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:root@localhost:3306/feedback'
+app.config['JWT_SECRET_KEY']='Mahitha20'
+app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:root@localhost:3306/student'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 jwt=JWTManager(app)
@@ -18,9 +22,19 @@ api=Api(app)
 
 from resources.register import Register
 from resources.login import Login
+from resources.u import U
+from resources.feedback import Feedback
+
 
 api.add_resource(Register,'/register')
 api.add_resource(Login,'/login')
+api.add_resource(U,'/users')
+api.add_resource(Feedback,'/feedback')
+
+
+
+    
+
 
 
 @app.before_first_request
