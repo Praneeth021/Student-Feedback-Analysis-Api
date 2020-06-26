@@ -24,13 +24,14 @@ from resources.register import Register
 from resources.login import Login
 from resources.u import U
 from resources.feedback import Feedback
+from resources.teacher import Teacher
 
 
 api.add_resource(Register,'/register')
 api.add_resource(Login,'/login')
 api.add_resource(U,'/users')
 api.add_resource(Feedback,'/feedback')
-
+api.add_resource(Teacher,'/teacher')
 
 
     
