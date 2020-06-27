@@ -1,6 +1,5 @@
 from db import db
 from sqlalchemy_serializer import SerializerMixin
-from sqlalchemy.orm import load_only
 
 
 class ClassModel(db.Model, SerializerMixin):

@@ -1,6 +1,6 @@
 from flask import jsonify
 from flask_restful import Resource, reqparse
-from models.feedback import FeedbackModel
+from models.feedback_model import FeedbackModel
 
 
 class Feedback(Resource):

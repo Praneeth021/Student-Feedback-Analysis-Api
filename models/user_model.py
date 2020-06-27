@@ -5,16 +5,16 @@ class UserModel(db.Model, SerializerMixin):
     __tablename__='users'
     rollno=db.Column(db.String(100),primary_key=True)
     username=db.Column(db.String(80))
-    dept_name=db.Column(db.String(80))
-    sec=db.Column(db.String(10))
+    deptartment_name=db.Column(db.String(80))
+    section=db.Column(db.String(10))
     year=db.Column(db.String(10))
     password=db.Column(db.String(80))
 
-    def __init__(self,rollno,username,password,dept_name,year,sec):
+    def __init__(self,rollno,username,password,deptartment_name,year,section):
         self.username=username
         self.rollno=rollno
-        self.dept_name=dept_name
-        self.sec=sec
+        self.deptartment_name=deptartment_name
+        self.section=section
         self.year=year
         self.password=password
 

@@ -3,6 +3,7 @@ from models.teachers_model import TeacherModel
 from sqlalchemy_serializer import SerializerMixin
 
 class FeedbackModel(db.Model):
+    
     __tablename__='feedbacks'
 
     s_id=db.Column(db.String(30), db.ForeignKey('users.rollno'),primary_key=True, nullable=False)

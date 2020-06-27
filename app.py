@@ -10,31 +10,30 @@ from sqlalchemy_serializer import SerializerMixin
 
 app=Flask(__name__)
 
-app.config['JWT_SECRET_KEY']='Mahitha20'
-app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:root@localhost:3306/student'
+app.config['JWT_SECRET_KEY']='Praneeth021'
+app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:root@localhost:3306/feedback'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 jwt=JWTManager(app)
 api=Api(app)
 
 
-
-
 from resources.register import Register
 from resources.login import Login
-from resources.u import U
+from resources.users import Users,UsersByRollno
 from resources.feedback import Feedback
 from resources.teacher import Teacher
-from resources.enter_class import EnterClass
-from resources.find_class import FindClass
+from resources.Classes import Classes
+from resources.teachers_at_classes import FindClass
 
-
+#Endpoints for apis
 api.add_resource(Register,'/register')
 api.add_resource(Login,'/login')
-api.add_resource(U,'/users')
+api.add_resource(Users,'/users')
+api.add_resource(UsersByRollno,'/users/<string:rollno>')
 api.add_resource(Feedback,'/feedback')
 api.add_resource(Teacher,'/teacher')
-api.add_resource(EnterClass, '/class')
+api.add_resource(Classes, '/class')
 api.add_resource(FindClass, '/findClass')
     
 

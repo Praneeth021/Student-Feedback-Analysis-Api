@@ -18,7 +18,7 @@ class FindClass(Resource):
         data=FindClass.parser.parse_args()
 
         result= ClassModel.find_by_class(data['department'], data['year'], data['section'])
-        d=[]
+        d=list()
         for i in result:
             x=i.to_dict()
             d.append(TeacherModel.find_by_tid(x['teacher_id']).to_dict())
