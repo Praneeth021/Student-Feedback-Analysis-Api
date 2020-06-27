@@ -14,8 +14,7 @@ class Feedback(Resource):
         data=Feedback.parser.parse_args()
 
 
-        if FeedbackModel.find_by_s_id(data['s_id']):
-            if FeedbackModel.find_by_t_id(data['t_id']):
+        if FeedbackModel.find_by_s_id(data['s_id'], data['t_id']):
                 return {"message":"You have already given"},400
         
         u=FeedbackModel(s_id=data['s_id'],t_id=data['t_id'],feedback=data['feedback'])

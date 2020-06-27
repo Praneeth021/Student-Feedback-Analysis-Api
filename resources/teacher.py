@@ -1,6 +1,6 @@
 from flask import jsonify
 from flask_restful import Resource, reqparse
-from models.techers_model import TeacherModel
+from models.teachers_model import TeacherModel
 
 
 class Teacher(Resource):

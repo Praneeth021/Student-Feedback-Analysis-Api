@@ -1,5 +1,5 @@
 from db import db
-from models.techers_model import TeacherModel
+from models.teachers_model import TeacherModel
 from sqlalchemy_serializer import SerializerMixin
 
 class FeedbackModel(db.Model):
@@ -20,8 +20,6 @@ class FeedbackModel(db.Model):
         db.session.commit()
 
     @classmethod
-    def find_by_s_id(cls,s_id):
-        return cls.query.filter_by(s_id=s_id).all()
-    @classmethod
-    def find_by_t_id(cls, t_id):
-        return cls.query.filter_by(t_id=t_id).all()
+    def find_by_s_id(cls,s_id,t_id):
+        return cls.query.filter_by(s_id=s_id, t_id=t_id).all()
+   

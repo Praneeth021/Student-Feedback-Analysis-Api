@@ -25,7 +25,7 @@ class TeacherModel(db.Model, SerializerMixin):
         self.email=email
         self.date_join=date_join
 
-        
+         
 
     def save_to_db(self):
         db.session.add(self)

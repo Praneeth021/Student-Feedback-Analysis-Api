@@ -25,6 +25,8 @@ from resources.login import Login
 from resources.u import U
 from resources.feedback import Feedback
 from resources.teacher import Teacher
+from resources.enter_class import EnterClass
+from resources.find_class import FindClass
 
 
 api.add_resource(Register,'/register')
@@ -32,8 +34,8 @@ api.add_resource(Login,'/login')
 api.add_resource(U,'/users')
 api.add_resource(Feedback,'/feedback')
 api.add_resource(Teacher,'/teacher')
-
-
+api.add_resource(EnterClass, '/class')
+api.add_resource(FindClass, '/findClass')
     
 
 
