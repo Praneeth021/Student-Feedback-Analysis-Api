@@ -18,7 +18,7 @@ class UsersByRollno(Resource):
 
     def get(self,rollno):
         if UserModel.find_by_id(rollno):
-            data=UserModel.query.filter_by(rollno=rollno).first();
+            data=UserModel.query.filter_by(rollno=rollno).first()
             result=data.to_dict()
             return make_response(jsonify(result),201)
         

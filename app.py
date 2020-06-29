@@ -10,7 +10,7 @@ from sqlalchemy_serializer import SerializerMixin
 
 app=Flask(__name__)
 
-app.config['JWT_SECRET_KEY']='Praneeth021'
+app.config['JWT_SECRET_KEY']='Mahitha20'
 app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:root@localhost:3306/feedback'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
@@ -25,6 +25,7 @@ from resources.feedback import Feedback
 from resources.teacher import Teacher
 from resources.Classes import Classes
 from resources.teachers_at_classes import FindClass
+from resources.ratings import Rating
 
 #Endpoints for apis
 api.add_resource(Register,'/register')
@@ -35,6 +36,7 @@ api.add_resource(Feedback,'/feedback')
 api.add_resource(Teacher,'/teacher')
 api.add_resource(Classes, '/class')
 api.add_resource(FindClass, '/findClass')
+api.add_resource(Rating,'/ratings')
     
 
 

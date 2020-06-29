@@ -60,4 +60,4 @@ def pred(string):
     X = cv.transform([review]).toarray()
     y=model.predict(X)
 
-    return y[0];
+    return y[0]
