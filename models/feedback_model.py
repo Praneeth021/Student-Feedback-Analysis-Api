@@ -2,7 +2,7 @@ from db import db
 from models.teachers_model import TeacherModel
 from sqlalchemy_serializer import SerializerMixin
 
-class FeedbackModel(db.Model):
+class FeedbackModel(db.Model,SerializerMixin):
     
     __tablename__='feedbacks'
 

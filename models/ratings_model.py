@@ -1,7 +1,8 @@
 from db import db
+from sqlalchemy_serializer import SerializerMixin
 
 
-class RatingModel(db.Model):
+class RatingModel(db.Model,SerializerMixin):
     __tablename__='ratings'
 
     teacher_id=db.Column(db.String(30), db.ForeignKey('teachers.tid'), primary_key=True)
@@ -14,3 +15,8 @@ class RatingModel(db.Model):
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
+
+
+    @classmethod
+    def find_by_id(cls,id):
+        return cls.query.filter_by(teacher_id=id).first()

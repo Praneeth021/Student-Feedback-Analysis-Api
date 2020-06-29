@@ -1,6 +1,8 @@
 from flask import jsonify
 from flask_restful import Resource, reqparse
 from models.feedback_model import FeedbackModel
+from flask_restful import jwt_required
+
 
 
 class Feedback(Resource):
@@ -9,7 +11,7 @@ class Feedback(Resource):
     parser.add_argument('t_id',type=str,required=True)
     parser.add_argument('feedback',type=str,required=True,help="This field cannot be blank")
 
-
+    @jwt_required
     def post(self):
         data=Feedback.parser.parse_args()
 

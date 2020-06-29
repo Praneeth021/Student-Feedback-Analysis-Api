@@ -10,7 +10,7 @@ from sqlalchemy_serializer import SerializerMixin
 
 app=Flask(__name__)
 
-app.config['JWT_SECRET_KEY']='Mahitha20'
+app.config['JWT_SECRET_KEY']='Praneeth021'
 app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:root@localhost:3306/feedback'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
@@ -38,7 +38,19 @@ api.add_resource(Classes, '/class')
 api.add_resource(FindClass, '/findClass')
 api.add_resource(Rating,'/ratings')
     
+@jwt.unauthorized_loader
+def missing_token_callback(error):
+    return jsonify({
+        'error': 'authorization_required',
+        "description": "Request does not contain an access token."
+    }), 401
 
+@jwt.invalid_token_loader
+def invalid_token_callback(error):
+    return jsonify({
+        'error': 'invalid_token',
+        'message': 'Signature verification failed.'
+    }), 401
 
 
 @app.before_first_request
@@ -50,3 +62,5 @@ if __name__=='__main__':
     from db import db
     db.init_app(app)
     app.run(debug=True)
+
+    

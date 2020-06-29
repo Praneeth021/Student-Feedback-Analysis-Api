@@ -1,6 +1,7 @@
 from flask import jsonify
 from flask_restful import Resource, reqparse
 from models.class_model import ClassModel
+from flask_jwt_extended import jwt_required
 
 class Classes(Resource):
     parser=reqparse.RequestParser()

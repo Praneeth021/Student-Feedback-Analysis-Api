@@ -1,6 +1,7 @@
 from flask import jsonify
 from flask_restful import Resource, reqparse
 from models.teachers_model import TeacherModel
+from flask_jwt_extended import jwt_required
 
 
 class Teacher(Resource):
@@ -14,7 +15,7 @@ class Teacher(Resource):
     parser.add_argument('email',type=str,required=True,help="Email cannot be blank")
     parser.add_argument('date_joined',type=str,required=True,help="Date Joined cannot be blank")
 
-
+    @jwt_required
     def post(self):
         data=Teacher.parser.parse_args()
         
@@ -22,14 +23,6 @@ class Teacher(Resource):
             return {"message":"Already exists"},400
 
 
-        teacher=TeacherModel()
-        teacher.tid=data['tid']
-        teacher.username=data['username']
-        teacher.designation=data['designation']
-        teacher.department=data['department']
-        teacher.gender=data['gender']
-        teacher.data_joined=data['date_joined']
-        teacher.email=data['email']
-
+        teacher=TeacherModel(tid=data['tid'],username=data['username'],designation=data['designation'],deptartment=data['department'],gender=data['gender'],date_joined=data['date_joined'],image=data['image'],email=data['email'])
         teacher.save_to_db()
         return {"message":"successfully added"},201
