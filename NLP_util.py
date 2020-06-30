@@ -34,7 +34,7 @@ y=db['Label']
 
 
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.01, random_state = 42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.02, random_state = 42)
 
 
 
@@ -53,11 +53,11 @@ def pred(string):
     review = re.sub('[^a-zA-Z]', ' ',string)
     review = review.lower()
     review = review.split()
-    
     review = [wordnet.lemmatize(word) for word in review]
     review = ' '.join(review)
-    corpus.append(review)
     X = cv.transform([review]).toarray()
     y=model.predict(X)
 
     return y[0]
+
+

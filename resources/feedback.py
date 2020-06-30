@@ -1,7 +1,7 @@
 from flask import jsonify
 from flask_restful import Resource, reqparse
 from models.feedback_model import FeedbackModel
-from flask_restful import jwt_required
+from flask_jwt_extended import jwt_required
 
 
 

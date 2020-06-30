@@ -5,13 +5,13 @@ from models.feedback_model import FeedbackModel
 from models.teachers_model import TeacherModel
 from NLP_util import pred
 from db import db
-
 from flask_jwt_extended import jwt_required
 
 
 
 class Rating(Resource):
 
+    @jwt_required
     def get(self):
         
         teachers=TeacherModel.query.all()
@@ -38,4 +38,4 @@ class Rating(Resource):
             except:
                 model=RatingModel(teacher_id=x['tid'],rating=rating)
                 model.save_to_db()
-        return make_response(jsonify({"msg":"Succesful"}),200)
+        return make_response(model.to_dict(),200)
