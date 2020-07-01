@@ -11,7 +11,6 @@ from flask_restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from NLP_util import pred
-
 from models.user_model import UserModel
 from flask import make_response, jsonify
 from sqlalchemy_serializer import SerializerMixin
@@ -59,9 +58,7 @@ def invalid_token_callback(error):
     }), 401
 
 
-@app.before_first_request
-def create():
-    db.create_all()
+
 
 
 @app.route('/')
