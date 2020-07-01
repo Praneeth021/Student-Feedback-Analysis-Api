@@ -50,4 +50,4 @@ wcwidth==0.2.5
 Werkzeug==1.0.1
 wincertstore==0.2
 xlrd==1.2.0
-pywin32==228
+
