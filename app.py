@@ -68,7 +68,7 @@ def create_database():
 
 @app.route('/')
 def Main():
-    return "<h1>StuFeed Api Endpoints</h1>
+    return "<h1>StuFeed Api Endpoints</h1>"
 
 if __name__ == '__main__':
     app.run()
