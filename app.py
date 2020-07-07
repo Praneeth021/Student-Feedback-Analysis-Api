@@ -24,6 +24,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 jwt = JWTManager(app)
 api = Api(app)
 
+from db import db
+db.init_app(app)
+
 
 # Endpoints for apis
 api.add_resource(Register, '/register')
@@ -65,10 +68,7 @@ def create_database():
 
 @app.route('/')
 def Main():
-    return "<h1>StuFeed Api Endpoints</h1>"
-
+    return "<h1>StuFeed Api Endpoints</h1>
 
 if __name__ == '__main__':
-    from db import db
-    db.init_app(app)
     app.run()
