@@ -57,7 +57,9 @@ def invalid_token_callback(error):
         'message': 'Signature verification failed.'
     }), 401
 
-
+@app.before_first_request
+def create_database():
+     db.create_all()
 
 
 
@@ -69,5 +71,4 @@ def Main():
 if __name__ == '__main__':
     from db import db
     db.init_app(app)
-    db.create_all()
     app.run()
