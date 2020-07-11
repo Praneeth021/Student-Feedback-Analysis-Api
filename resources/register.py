@@ -7,7 +7,10 @@ class Register(Resource):
     parser=reqparse.RequestParser()
     parser.add_argument('rollno',type=str,required=True,help="this field cannot be blank")
     parser.add_argument('username',type=str,required=True,help="This field cannot be blank")
-    parser.add_argument('password',type=str,required=True,help="This field cannot be blank")
+    parser.add_argument('deptartment_name',type=str,required=True,help="This field cannot be blank")
+    parser.add_argument('section',type=str,required=True,help="this field cannot be blank")
+    parser.add_argument('year',type=str,required=True,help="this field cannot be blank")
+    parser.add_argument('password',type=str,required=True,help="this field cannot be blank")
 
 
     def post(self):
@@ -18,7 +21,8 @@ class Register(Resource):
         if UserModel.find_by_id(data['rollno']):
             return {"message":"You are already registered"},400
         
-        user=UserModel(rollno=data['rollno'],username=data['username'],password=data['password'])
+        user=UserModel(rollno=data['rollno'],username=data['username'], deptartment_name=data['deptartment_name'],
+                        section=data['section'], year=data['year'], password=data['password'])
         user.save_to_db()
 
         return {'message':"Your account created successfully"},201
