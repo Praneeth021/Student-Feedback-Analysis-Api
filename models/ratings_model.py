@@ -9,7 +9,7 @@ class RatingModel(db.Model, SerializerMixin):
         'teachers.tid'), primary_key=True)
     rating = db.Column(db.String(10))
 
-    def __init__(self, teacher_id, rating):
+    def __init__(self, teacher_id, rating=0):
         self.teacher_id = teacher_id
         self.rating = rating
 
