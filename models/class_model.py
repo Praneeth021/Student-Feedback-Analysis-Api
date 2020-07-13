@@ -3,22 +3,21 @@ from sqlalchemy_serializer import SerializerMixin
 
 
 class ClassModel(db.Model, SerializerMixin):
-    __tablename__='classes'
+    __tablename__ = 'classes'
 
-    id=db.Column(db.Integer, primary_key=True)
-    department=db.Column(db.String(80))
-    year=db.Column(db.String(10))
-    section=db.Column(db.String(10))
-    subject=db.Column(db.String(30))
-    teacher_id=db.Column(db.String(30))
+    id = db.Column(db.Integer, primary_key=True)
+    department = db.Column(db.String(80))
+    year = db.Column(db.String(10))
+    section = db.Column(db.String(10))
+    subject = db.Column(db.String(100))
+    teacher_id = db.Column(db.String(30))
 
-    def __init__(self,department,year,section, subject,teacher_id):
-        self.department=department
-        self.year=year
-        self.section=section    
-        self.subject=subject  
-        self.teacher_id=teacher_id
-        
+    def __init__(self, department, year, section, subject, teacher_id):
+        self.department = department
+        self.year = year
+        self.section = section
+        self.subject = subject
+        self.teacher_id = teacher_id
 
     def save_to_db(self):
         db.session.add(self)
@@ -30,5 +29,6 @@ class ClassModel(db.Model, SerializerMixin):
 
     @classmethod
     def find_by_class(cls, department, year, section):
-        classes=cls.query.filter_by(department=department, year=year, section=section).all()
+        classes = cls.query.filter_by(
+            department=department, year=year, section=section).all()
         return classes
