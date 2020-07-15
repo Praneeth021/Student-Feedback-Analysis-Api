@@ -1,4 +1,5 @@
 from flask_restful import Resource, reqparse, request
+from flask import jsonify, make_response
 from models.teachers_model import TeacherModel
 from models.user_model import UserModel
 from db import db
@@ -10,7 +11,7 @@ class DeleteTeacher(Resource):
     def put(self):
 
         current_user = get_jwt_identity()
-        user = UserModel.query.filter_by(id=current_user).first()
+        user = UserModel.query.filter_by(rollno=current_user).first()
         user = user.to_dict()
 
         tid=request.json.get('tid')

@@ -12,7 +12,7 @@ class Users(Resource):
     @jwt_required
     def get(self):
         current_user=get_jwt_identity()
-        user=UserModel.query.filter_by(id=current_user).first()
+        user=UserModel.query.filter_by(rollno=current_user).first()
         user=user.to_dict()
         if not (user['admin']) :
             return make_response(jsonify({"message":"Your are not authorised to access this resource"}),403)
@@ -20,7 +20,7 @@ class Users(Resource):
         result=[]
         for i in data:
             i=i.to_dict()
-            if(i['admin']==False):
+            if(i['admin']==False or i['admin']==None):
                 result.append(i)
         return make_response(jsonify(result),201)
 
@@ -33,7 +33,7 @@ class CurrentUser(Resource):
     def get(self):
         
         current_user=get_jwt_identity()
-        user=UserModel.query.filter_by(id=current_user).first()
+        user=UserModel.query.filter_by(rollno=current_user).first()
         if user:
             user=user.to_dict()
             return make_response(jsonify(user),201)

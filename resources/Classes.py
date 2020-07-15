@@ -13,25 +13,23 @@ class Classes(Resource):
     parser.add_argument('subject', type=str, required=True)
     parser.add_argument('teacher_id', type=str)
 
+
     @jwt_required
     def post(self):
 
         data = Classes.parser.parse_args()
 
         current_user = get_jwt_identity()
-        user = UserModel.query.filter_by(id=current_user).first().to_dict()
+        user = UserModel.query.filter_by(rollno=current_user).first().to_dict()
         if not user['admin']:
             return make_response(jsonify({'msg":Your are not authorised'}),403)
         
         if ClassModel.find_by_department(data['department'], data['year'], data['section'], data['subject']):
             return {"message": "Already Exists"}, 400
 
-        className = ClassModel()
-        className.department = data['department']
-        className.year = data['year']
-        className.usersection = data['section']
-        className.subject = data['subject']
-        className.teacher_id = data['teacher_id']
-        className.save_to_db()
 
+        className = ClassModel(department=data['department'], year = data['year'], section = data['section'],
+                                    subject = data['subject'], teacher_id = data['teacher_id'])
+
+        className.save_to_db()
         return {"message": "Added Successfully"}, 201
