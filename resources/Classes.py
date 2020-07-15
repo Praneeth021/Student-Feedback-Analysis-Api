@@ -19,7 +19,7 @@ class Classes(Resource):
         data = Classes.parser.parse_args()
 
         current_user = get_jwt_identity()
-        user = UserModel.query.filter_by(rollno=current_user).first().to_dict()
+        user = UserModel.query.filter_by(id=current_user).first().to_dict()
         if not user['admin']:
             return make_response(jsonify({'msg":Your are not authorised'}),403)
         

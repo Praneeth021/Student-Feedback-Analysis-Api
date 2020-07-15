@@ -29,7 +29,7 @@ class Teacher(Resource):
     def post(self):
         data = Teacher.parser.parse_args()
         current_user = get_jwt_identity()
-        user = UserModel.query.filter_by(rollno=current_user).first()
+        user = UserModel.query.filter_by(id=current_user).first()
         user = user.to_dict()
         if not (user['admin']):
             return make_response(jsonify({"msg": "You are not authorised to access the page"}), 403)

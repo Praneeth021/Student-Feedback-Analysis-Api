@@ -18,7 +18,7 @@ class Feedback(Resource):
         data = Feedback.parser.parse_args()
 
         current_user = get_jwt_identity()
-        user=UserModel.find_by_id(rollno=current_user).to_dict()
+        user=UserModel.find_by_id(id=current_user).to_dict()
         if FeedbackModel.find_by_s_id(user['rollno'], data['t_id']):
             return {"message": "You have already given"}, 400
 

@@ -11,7 +11,7 @@ class UpdateTeacher(Resource):
     def put(self):
 
         current_user = get_jwt_identity()
-        user = UserModel.query.filter_by(rollno=current_user).first()
+        user = UserModel.query.filter_by(id=current_user).first()
         user = user.to_dict()
 
         tid=request.json.get('tid')

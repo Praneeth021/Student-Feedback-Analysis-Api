@@ -16,7 +16,7 @@ class Rating(Resource):
 
         current_user = get_jwt_identity()
 
-        user = UserModel.find_by_id(rollno=current_user).to_dict()
+        user = UserModel.find_by_id(id=current_user).to_dict()
         if not user['admin']:
             return make_response(jsonify({"msg": "You are not authorised to view this content"}), 403)
 
