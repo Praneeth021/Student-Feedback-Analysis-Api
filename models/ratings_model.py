@@ -18,5 +18,6 @@ class RatingModel(db.Model, SerializerMixin):
         db.session.commit()
 
     @classmethod
+
     def find_by_id(cls, id):
         return cls.query.filter_by(teacher_id=id).first()
