@@ -18,7 +18,7 @@ from sqlalchemy_serializer import SerializerMixin
 app = Flask(__name__)
 
 app.config['JWT_SECRET_KEY'] = 'Praneeth021'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:Password@stufeed.cfwpslxqguuv.us-east-1.rds.amazonaws.com:3306/feedback'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://sql12357409:QWtYWDEJuM@sql12.freemysqlhosting.net:3306/sql12357409'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 jwt = JWTManager(app)

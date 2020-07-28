@@ -5,10 +5,10 @@ from sqlalchemy_serializer import SerializerMixin
 class TeacherModel(db.Model, SerializerMixin):
     __tablename__ = 'teachers'
     tid = db.Column(db.String(30), primary_key=True)
-    username = db.Column(db.String(80))
-    department = db.Column(db.String(80))
+    username = db.Column(db.String(200))
+    department = db.Column(db.String(200))
     gender = db.Column(db.String(30))
-    image = db.Column(db.String(80))
+    image = db.Column(db.String(300))
     designation = db.Column(db.String(80))
     email = db.Column(db.String(80))
     date_joined = db.Column(db.String(15))

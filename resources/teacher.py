@@ -4,6 +4,7 @@ from models.teachers_model import TeacherModel
 from models.user_model import UserModel
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
+
 # Resource for adding Teachers
 
 
