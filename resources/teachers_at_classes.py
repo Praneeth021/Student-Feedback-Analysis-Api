@@ -15,7 +15,7 @@ class FindClass(Resource):
     def get(self):
 
         current_user = get_jwt_identity()
-        user = UserModel.find_by_id(rollno=current_user).to_dict()
+        user = UserModel.find_by_id(id=current_user).to_dict()
         result = ClassModel.find_by_class(
             user['department'], user['year'], user['section'])
         d = list()
@@ -23,3 +23,4 @@ class FindClass(Resource):
             x = i.to_dict()
             d.append(TeacherModel.find_by_tid(x['teacher_id']).to_dict())
         return make_response(jsonify(d), 201)
+

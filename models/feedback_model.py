@@ -24,8 +24,13 @@ class FeedbackModel(db.Model, SerializerMixin):
 
     @classmethod
     def find_by_s_id(cls, s_id, t_id):
-        return cls.query.filter_by(s_id=s_id, t_id=t_id).all()
+        return cls.query.filter_by(s_id=s_id, t_id=t_id).first()
 
     @classmethod
     def find_by_t_id(cls, t_id):
         return cls.query.filter_by(t_id=t_id).all()
+
+
+    @classmethod
+    def find_by_rollno(cls, s_id):
+        return cls.query.filter_by(s_id=s_id).all()

@@ -15,6 +15,7 @@ class Classes(Resource):
     parser.add_argument('subject', type=str, required=True)
     parser.add_argument('teacher_id', type=str)
 
+
     @jwt_required
     def post(self):
 
@@ -28,14 +29,11 @@ class Classes(Resource):
         if ClassModel.find_by_department(data['department'], data['year'], data['section'], data['subject']):
             return {"message": "Already Exists"}, 400
 
-        className = ClassModel()
-        className.department = data['department']
-        className.year = data['year']
-        className.usersection = data['section']
-        className.subject = data['subject']
-        className.teacher_id = data['teacher_id']
-        className.save_to_db()
 
+        className = ClassModel(department=data['department'], year = data['year'], section = data['section'],
+                                    subject = data['subject'], teacher_id = data['teacher_id'])
+
+        className.save_to_db()
         return {"message": "Added Successfully"}, 201
 
 

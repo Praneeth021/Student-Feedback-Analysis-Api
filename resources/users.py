@@ -20,7 +20,7 @@ class Users(Resource):
         result=[]
         for i in data:
             i=i.to_dict()
-            if(i['admin']==False):
+            if(i['admin']==False or i['admin']==None):
                 result.append(i)
         return make_response(jsonify(result),201)
 

@@ -33,6 +33,11 @@ class UserModel(db.Model, SerializerMixin):
     def find_by_username(cls,username):
         return cls.query.filter_by(username=username).first()
 
+    def serialize(self):
+        return {"rollno": self.rollno,
+                "username": self.username}
+    
+
 
     
 

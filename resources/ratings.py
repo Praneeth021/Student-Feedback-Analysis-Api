@@ -16,7 +16,7 @@ class Rating(Resource):
 
         current_user = get_jwt_identity()
 
-        user = UserModel.find_by_id(rollno=current_user).to_dict()
+        user = UserModel.find_by_id(id=current_user).to_dict()
         if not user['admin']:
             return make_response(jsonify({"msg": "You are not authorised to view this content"}), 403)
 
@@ -24,6 +24,7 @@ class Rating(Resource):
 
         for teacher in teachers:
             x = teacher.to_dict()
+            rating=0
             feedbacks = FeedbackModel.find_by_t_id(t_id=x['tid'])
             if len(feedbacks) > 0:
                 i = j = 0
@@ -37,11 +38,17 @@ class Rating(Resource):
                     i += 1
                 rating = j/i
                 print(rating)
-        try:
-            model = RatingModel.find_by_id(x['tid'])
-            model.rating = rating
-            db.session.commit()
-        except:
-            model = RatingModel(teacher_id=x['tid'], rating=rating)
-            model.save_to_db()
-        return make_response(model.to_dict(), 200)
+            if(RatingModel.find_by_id(x['tid'])):
+                model = RatingModel.find_by_id(x['tid'])
+                model.rating = rating
+                db.session.commit()
+            else:
+                model = RatingModel(teacher_id=x['tid'], rating=rating)
+                model.save_to_db()
+        result= RatingModel.query.all()
+        d=[]
+        for i in result:
+            i=i.to_dict()
+            d.append(i)
+
+        return make_response(jsonify(d), 200)

@@ -9,7 +9,7 @@ class ClassModel(db.Model, SerializerMixin):
     department = db.Column(db.String(80))
     year = db.Column(db.String(10))
     section = db.Column(db.String(10))
-    subject = db.Column(db.String(30))
+    subject = db.Column(db.String(100))
     teacher_id = db.Column(db.String(30))
 
     def __init__(self, department, year, section, subject, teacher_id):
