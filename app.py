@@ -81,7 +81,7 @@ def create_database():
 
 @app.route('/')
 def Main():
-    return "<h1>StuFeed Api Endpoints</h1>"
+    return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
