@@ -2,79 +2,65 @@
 <html lang="en">
 
 <head>
-    <title>Stufeed</title>
+    <title>Login</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@700&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-
 <style>
-
-    *{
-        margin:0;
-        padding:0;
+    * {
+        padding: 0;
+        margin: 0;
         box-sizing: border-box;
     }
 
-    h1 {
-        font-family: 'Poppins',sans-serif;
-        font-weight: 700;
-        font-size:45px;
-    }
-
-    small {
-        font-size:20px;
-        color:grey;      
-        font-family:'Open Sans',sans-serif;
-    }
-
-    .main-title-extra {
-        color:#6BD5E1;
-    }
-
-    .main-header{
-        display:flex;
+    .custom-form {
+        display: flex;
         flex-direction: column;
         justify-content: center;
-        margin-top: 20px;
-    
+        align-content: center;
     }
 
-    .navbar-brand{
+    h1 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 45px;
+    }
+
+    .navbar-brand {
         text-transform: uppercase;
-        font-family: 'Poppins',sans-serif;
+        font-family: 'Poppins', sans-serif;
         font-weight: 200;
     }
 
-    .nav-item{
+    .nav-item {
         text-transform: uppercase;
-        font-family: 'Poppins',sans-serif;
-        margin:10px;
-
-
+        font-family: 'Poppins', sans-serif;
+        margin: 10px
     }
 
-
-    .main-content img {
-        height: 100%;
-        width:100%;
+    input {
+        width: 50%;
     }
-
 </style>
 
 <body>
 
+
+
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
+
             <a class="navbar-brand" href="#">Stufeed</a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
                 data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
@@ -82,36 +68,53 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <ul class="navbar-nav ml-auto mt-2">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link active" href="#">Login</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class='main-content'>
+    <div class="login-main">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-5 main-header">
-                    <h1 class='main-title'>Welcome to <span class="main-title-extra">Stufeed</span> Admin Site</h1>
-                    <small>The only site of Geniune Feedback</small>
-                    <button class="btn btn-outline-primary align-self-start m-2 p-2">
-                        Login Here
-                    </button>
-                </div>
-                <div class="col-12 col-lg-7">
-                    <img  src="https://static-2.gumroad.com/res/gumroad/1211634803146/asset_previews/10d376519ed6e83192a8606b66135312/retina/thumbnail.png"
+            <div class="row justify-content-center align-items-center">
+                <div class="login-right col-lg-7 col-2">
+                    <img height="560px"
+                        src="https://static-2.gumroad.com/res/gumroad/1211634803146/asset_previews/33419f11cc751cbe8803753fd51039fb/retina/drawkit-list-app-colour-thumbnail.png"
                         alt="">
                 </div>
-            </div>
+                <div class="login-left col-lg-5 col-10 ">
+                    <div class="login-header">
+                        <h1 class="text-center">Login</h1>
+                    </div>
+                    <div class="form-group custom-form">
+                        <form action="" class="form-group custom-form">
+                            <div class="form-group">
+                                <label for="username"></label>
+                                <input type="text" class="form-control" name="username" id="username"
+                                    aria-describedby="helpId" placeholder="Username" required>
 
+                            </div>
+                            <div class="form-group">
+                                <label for="password"></label>
+                                <input type="password" class="form-control" name="password" id="password"
+                                    aria-describedby="helpId" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
+
+    </div>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
