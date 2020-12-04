@@ -2,16 +2,16 @@
 <html lang="en">
 
 <head>
-    <title>Stufeed</title>
+    <title>Admin DashBoard</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@700&display=swap"
         rel="stylesheet">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -25,50 +25,12 @@
         box-sizing: border-box;
     }
 
+    .navbar-brand,
     h1 {
         font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-        font-size: 45px;
-    }
-
-    small {
-        font-size: 20px;
-        color: grey;
-        font-family: 'Open Sans', sans-serif;
-    }
-
-    .main-title-extra {
-        color: #6BD5E1;
-    }
-
-    .main-header {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-top: 20px;
-
-    }
-
-    .navbar-brand {
-        text-transform: uppercase;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 200;
-    }
-
-    .nav-item {
-        text-transform: uppercase;
-        font-family: 'Poppins', sans-serif;
-        margin: 10px;
-
-
-    }
-
-
-    .main-content img {
-        height: 100%;
-        width: 100%;
     }
 </style>
+
 
 <body>
 
@@ -83,34 +45,50 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav ml-auto mt-2">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ url_for('Main') }}">Home <span class="sr-only">(current)</span></a>
+                        <p class='nav-link active'>Hello Admin!</p>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('AdminLogin') }}">Login</a>
+                        <a class="nav-link" href="{{ url_for('AdminLogout') }}">Logout</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class='main-content'>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-5 main-header">
-                    <h1 class='main-title'>Welcome to <span class="main-title-extra">Stufeed</span> Admin Site</h1>
-                    <small>The only site of Geniune Feedback</small>
-                    <a href="{{ url_for('AdminLogin') }}" class="btn btn-outline-primary align-self-start m-2 p-2">
-                        Login Here
-                    </a>
-                </div>
-                <div class="col-12 col-lg-7">
-                    <img src="https://static-2.gumroad.com/res/gumroad/1211634803146/asset_previews/10d376519ed6e83192a8606b66135312/retina/thumbnail.png"
-                        alt="">
-                </div>
-            </div>
 
+    <section class="main-dashboard">
+        <div class="container">
+            <div class="main-title">
+                <h1 class="text-center m-2 p-2">Department of Information and Technology</h1>
+            </div>
+            <div class="dashboard-ratings">
+                <div class="row mt-1">
+                    {% for teacher in response %}
+                    <div class="col-lg-4 mt-1">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ teacher['image'] }}" height="300px" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">{{teacher['username']}}</h4>
+                                <p class="card-text">{{teacher['designation']}}</p>
+                                {% if data[teacher['tid']]==0 %}
+                                <p class="card-text">Rating : <strong>Not Rated</strong>
+                                </p>
+                                {% else %}
+                                <p class="card-text">Rating : {% for i in range(data[teacher['tid']]) %}<i
+                                        class="fa fa-star" aria-hidden="true"></i>
+                                    {% endfor %}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
         </div>
-    </main>
+    </section>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

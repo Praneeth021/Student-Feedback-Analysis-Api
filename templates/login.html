@@ -69,11 +69,12 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('Main')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Login</a>
+                        <a class="nav-link active" href="{{url_for('AdminLogin') }}">Login <span
+                                class="sr-only">(current)</span></a>
                     </li>
                 </ul>
             </div>
@@ -93,7 +94,7 @@
                         <h1 class="text-center">Login</h1>
                     </div>
                     <div class="form-group custom-form">
-                        <form action="" class="form-group custom-form">
+                        <form action="" class="form-group custom-form" method="POST">
                             <div class="form-group">
                                 <label for="username"></label>
                                 <input type="text" class="form-control" name="username" id="username"
@@ -106,6 +107,9 @@
                                     aria-describedby="helpId" placeholder="Password">
                             </div>
                             <button type="submit" class="btn btn-primary">Login</button>
+                            {% if error %}
+                            <p class="error"><strong>Error:</strong> {{ error }}
+                                {% endif %}
                         </form>
                     </div>
                 </div>
